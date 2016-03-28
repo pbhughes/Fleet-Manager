@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="fleetManager">
+<head>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+</head>
+<body ng-controller="ViewController as viewControl">
+    <div class="page-header">
+        <img src="Images/logo_raw.png"  />
+        <h3 style="display:inline"><span style="color:blue;font-family: 'Satisfy', cursive; padding:0.625em;">fleetmanager</span>.bargedata.com</h3>
+        <div style="float:right;" ng-show="viewControl.isLoggedIn">
+            <span style="padding-right:3em; display:block;">Logged in as: {{viewControl.userName}}</span>
+            <a href="#" ng-click="viewControl.logOut()">Log Out</a>
+        </div>
+    </div>
+    <div class="col-lg-12 text-center">
+        <div id="login" ng-hide="viewControl.isLoggedIn">
+            <label>UserID:</label>
+            <input type="text" id="txtUserName" ng-model="viewControl.userName" autofocus />
+            <label>Password</label>
+            <input type="password" id="txtPassword" ng-model="viewControl.password" />
+            <input type="button" value="Log In" ng-click="viewControl.logIn()" />
+            <h5 style="color:red; font-size: 1.25em;" ng-hide="viewControl.isLoggedIn">{{viewControl.message}}</h5>
+        </div>
+        <div id="fleets" ng-controller="FleetController as manager" ng-show="viewControl.isLoggedIn">
+            <div ng-repeat="fleet in manager.fleets">
+                <h1>{{fleet.name}}</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-1.9.0.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
