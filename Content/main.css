@@ -1,7 +1,36 @@
 ﻿body {
-    font-size : 16px;
+    font-size: 16px;
 }
 
-h3{
-    font-size : 1.2em;
+h1,h2,h3,h4,h5 {
+    font-size: 1.2em;
+}
+
+.logo{
+    display : inline;
+}
+
+.siteUrl{
+    display : inline;
+}
+
+.status{
+    vertical-align:central;
+    float:right;
+    padding-right:3em;
+}
+
+@media screen and (max-width:640px) {
+    .logo{
+        display : none;
+    }
+
+    h1,h2,h3,h4,h5 {
+    font-size: 1.0em;
+    }
+
+    .status{
+        float:right;
+        padding-right:0.05em;
+}
 }

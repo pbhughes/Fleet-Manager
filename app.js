@@ -3,6 +3,7 @@
 
     app.controller('ViewController', function () {
         this.isLoggedIn = false;
+        this.loggedInUserName = "";
         this.userName = "";
         this.password = "";
         this.message = "";
@@ -11,8 +12,10 @@
 
             if (this.userName === 'barkley' && this.password === 'barkley') {
                 this.isLoggedIn = true;
+                this.loggedInUserName = this.userName;
                 this.userName = "";
                 this.password = "";
+                this.message = "";
             }
             else {
                 this.isLoggedIn = false;
