@@ -1,0 +1,37 @@
+﻿[
+    {
+        "ID": 1,
+        "name": "In Bound Barges",
+        "type": "remote",
+        "pocName": "",
+        "pocEmail": "",
+        "pocPHone": "",
+        "containers": [
+            {
+                "ID": "ING456789",
+                "tonnage": 2230.963,
+                "material": "wheat"
+            },
+            {
+                "ID": "AEP789123",
+                "tonnage": 2200.12,
+                "material": "wheat"
+            }
+        ]
+    },
+    {
+        "ID": 2,
+        "name": "Loading Dock",
+        "type": "remote",
+        "pocName": "",
+        "pocEmail": "",
+        "pocPHone": "",
+        "containers": [
+            {
+                "ID": "ING565656",
+                "tonnage": 23500.69,
+                "material": "wheat"
+            }
+        ]
+    }
+]

@@ -2,6 +2,7 @@
     var app = angular.module('fleetManager', []);
 
     app.controller('ViewController', function () {
+       
         this.isLoggedIn = false;
         this.loggedInUserName = "";
         this.userName = "";
@@ -9,7 +10,6 @@
         this.message = "";
 
         this.logIn = function () {
-
             if (this.userName === 'barkley' && this.password === 'barkley') {
                 this.isLoggedIn = true;
                 this.loggedInUserName = this.userName;
@@ -30,43 +30,78 @@
             this.isLoggedIn = false;
         };
     });
-   
-    app.controller('FleetController',['$http', function ($http) {
 
-        this.fleets =  [
-        {
-            ID: 1,
-            name: 'In Bound Barges',
-            type: 'remote',
-            pocName: '',
-            pocEmail: '',
-            pocPhone: ''
-        },
-        {
-            ID: 2,
-            name: 'Loading Dock',
-            type: 'remote',
-            pocName: '',
-            pocEmail: '',
-            pocPhone: ''
-        },
-        {
-            ID: 3,
-            name: 'Up River Staging 1',
-            type: 'remote',
-            pocName: '',
-            pocEmail: '',
-            pocPhone: ''
-        },
-        {
-            ID: 3,
-            name: 'Up River Staging 2',
-            type: 'remote',
-            pocName: '',
-            pocEmail: '',
-            pocPhone: ''
+    app.controller('FleetListController',['$http', function ($http) {
+        var fleetList = this;
+        fleetList.fleets = [];
+        this.newFleetName = '';
+        this.currentFleet = {};
+
+        this.saveFleet = function() {
+            if (window.localStorage) {
+                console.log('Local Storage Supported');
+                window.localStorage.setItem('allFleet',JSON.stringify(fleetList.fleets));
+            }
+            else {
+                console.log('Local storage is not supported');
+            }
+        
+        };
+        this.removeFleet = function () {
+            fleetList.fleets.forEach(function (item) {
+                if (item.isSelected) {
+                    if (confirm("Are you sure you want to remove fleet: " + item.name)) {
+                        var index = fleetList.fleets.indexOf(item);
+                        fleetList.fleets.splice(index, 1);
+                    }
+                }
+            });
+        };
+
+        this.addFleet = function () {
+            var fleet = {
+                ID: this.fleets.length,
+                name: this.newFleetName,
+                type: 'remote',
+                pocName: '',
+                pocEmail: ''
+            };
+            fleetList.fleets.push(fleet);
         }
-        ];
+
+        if (window.localStorage) {
+            if (localStorage.length > 0) {
+                console.log('Local storage had something');
+                fleetList.fleets = JSON.parse(localStorage.getItem('allFleet'));
+            }
+            else {
+                console.log('local storage was empty');
+            }
+            
+        }
+        if(! fleetList.fleets || fleetList.fleets.length === 0)
+        {
+            $http.get('/Data/fleets.json').success(function (data) {
+                fleetList.fleets = data;
+            });
+        }        
+
     }]);
 
+    app.directive('fleetDisplay', function () {
+        return {
+            restrict: 'E',
+            templateUrl: "Directives/fleet-display.html",
+            link: function (scope, elem, attrs) {
+                var tonnage = 0.0;
+                scope.fleet.containers.forEach(function (item) {
+                    tonnage = tonnage + item.tonnage;
+                });
+                scope.fleet.totalTonnage = tonnage;
+                scope.isSelected = {};
+
+                
+            }
+        };
+    });
 })();

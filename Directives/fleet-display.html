@@ -1,0 +1,16 @@
+﻿<div class="row">
+    <div class="col-sm-5 vcenter">
+        <input type="checkbox" ng-model="fleet.isSelected" name="name" value="{{fleet.name}}" />
+        <label>
+            {{fleet.name}}
+        </label>
+        
+    </div>
+    <div class="col-sm-3 vcenter">Container Count: {{fleet.containers.length}}</div>
+    <div class="col-sm-3 vcenter">Total Tonnage: {{fleet.totalTonnage | number:2}}</div>
+</div>
+<div class="row" ng-repeat="container in fleet.containers">
+    <div class="col-sm-1">
+        {{container.ID}}
+    </div>
+</div>

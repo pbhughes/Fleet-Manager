@@ -1,16 +1,19 @@
 ﻿<!DOCTYPE html>
 <html ng-app="fleetManager">
 <head>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <link href="Content/main.css" rel="stylesheet" />
 </head>
 <body ng-controller="ViewController as viewControl">
     <div class="page-header">
         <img class="logo" src="Images/logo_raw.png" />
-        <h3 class="siteUrl"><span style="color:blue; font-family: 'Satisfy', cursive; padding:0.625em;">fleetmanager</span>.bargedata.com</h3>
-        <div class="status" ng-show="viewControl.isLoggedIn" >
+        <h3 class="siteUrl"><span style="color:blue; font-family: 'Satisfy', cursive; padding:0.625em;">Fleetmanager</span>.bargedata.com</h3>
+        <div class="status" ng-show="viewControl.isLoggedIn">
             <span style="display:inline;">Logged in as: {{viewControl.loggedInUserName}}</span>
             <a href="#" ng-click="viewControl.logOut()">Log Out</a>
         </div>
@@ -22,18 +25,31 @@
                 <input type="text" id="txtUserName" ng-model="viewControl.userName" autofocus />
                 <label>Password</label>
                 <input type="password" id="txtPassword" ng-model="viewControl.password" />
-                <input type="submit" value="Log In" />
+                <input type="submit" value="Log In" class="btn-info btn-responsive" />
                 <h5 style="color:red; font-size: 1.25em;" ng-hide="viewControl.isLoggedIn">{{viewControl.message}}</h5>
             </form>
         </div>
-        <div id="fleets" ng-controller="FleetController as manager" ng-show="viewControl.isLoggedIn">
-            <div ng-repeat="fleet in manager.fleets">
-                <h1>{{fleet.name}}</h1>
+
+        <div class="container text-left row" id="fleets"
+             ng-show="viewControl.isLoggedIn" ng-controller="FleetListController as manager" >
+           
+                <form name="addFleet" ng-controller="FleetListController" class="form-control"
+                      style="background-color : transparent; display:inline;"
+                      ng-submit="addFleet.$valid && manager.addFleet()" novalidate>
+                    <input type="text" style="text-transform:uppercase" required pattern=".{3,}" placeholder="add fleet name..."
+                           ng-model="manager.newFleetName" />
+                    <input type="submit" class="btn btn-info btn-responsive " value="Add Fleet" />
+                    <input type="button" class="btn btn-info btn-responsive " value="Save Fleet" ng-click="manager.saveFleet()" />
+                    <input type="button" class="btn btn-info btn-responsive " value="Remove Fleet(s)" ng-click="manager.removeFleet()" />
+                </form>
+
+            <div class="table" ng-repeat="fleet in manager.fleets">
+                <fleet-display></fleet-display>
             </div>
         </div>
     </div>
-
     <script src="Scripts/jquery-1.9.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script src="app.js"></script>
 </body>

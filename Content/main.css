@@ -1,10 +1,35 @@
-﻿body {
+﻿html{
+    background: url(../../Images/../../Images/bargesBackGround.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -O-background-size: cover;
+    background-size:cover;
+}
+body {
     font-size: 16px;
+    background-color:transparent;
 }
 
-h1,h2,h3,h4,h5 {
-    font-size: 1.2em;
+.vcenter{
+    display : inline-block;
+    vertical-align : middle;
+    float : none;
 }
+
+input{
+    line-height : 1em;
+}
+
+
+
+p{
+    font-size : 1.0em;
+}
+
+.containerList{
+    font-size : 1.0em;
+}
+
 
 .logo{
     display : inline;
@@ -12,6 +37,8 @@ h1,h2,h3,h4,h5 {
 
 .siteUrl{
     display : inline;
+    line-height : 2.0em;
+    font-size : 2.3em;
 }
 
 .status{
@@ -19,18 +46,43 @@ h1,h2,h3,h4,h5 {
     float:right;
     padding-right:3em;
 }
+.ng-dirty .ng-valid{
+    border-color : aquamarine;
+}
+
+.ng-dirty .ng-invalid{
+    border-color:crimson;
+}
+
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+  }
 
 @media screen and (max-width:640px) {
     .logo{
         display : none;
     }
 
-    h1,h2,h3,h4,h5 {
-    font-size: 1.0em;
-    }
-
     .status{
         float:right;
         padding-right:0.05em;
+    }
+
+    .containerList{
+        font-size : 0.7em;
+     }
+
+    .btn-responsive {
+        padding:2px 4px;
+        font-size:50%;
+        line-height: .8em;
+        border-radius:3px;
+  }
+
+    input{
+    line-height : .08em;
 }
 }
