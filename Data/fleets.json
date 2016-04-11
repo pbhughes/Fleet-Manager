@@ -8,13 +8,13 @@
         "pocPHone": "",
         "containers": [
             {
-                "ID": "ING456789",
-                "tonnage": 2230.963,
+                "ID": "PCA458963-UI",
+                "tonnage": 2323.23,
                 "material": "wheat"
             },
             {
-                "ID": "AEP789123",
-                "tonnage": 2200.12,
+                "ID": "ING56899",
+                "tonnage": 2323.23,
                 "material": "wheat"
             }
         ]
@@ -26,12 +26,6 @@
         "pocName": "",
         "pocEmail": "",
         "pocPHone": "",
-        "containers": [
-            {
-                "ID": "ING565656",
-                "tonnage": 23500.69,
-                "material": "wheat"
-            }
-        ]
+        "containers": []
     }
 ]

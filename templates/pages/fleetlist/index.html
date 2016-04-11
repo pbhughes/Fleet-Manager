@@ -1,0 +1,24 @@
+﻿<div ng-controller="FleetListController as manager" ng-show="viewControl.isLoggedIn">
+
+
+    <div class="container" style="padding-bottom:20px;" id="fleets">
+
+        <form name="addFleet" ng-controller="FleetListController" class="form-control"
+              style="background-color : transparent; display:inline;"
+              ng-submit="addFleet.$valid && manager.addFleet()" novalidate>
+            <input type="text" style="text-transform:uppercase" required pattern=".{3,}" placeholder="add fleet name..."
+                   ng-model="manager.newFleetName" class="text-center" />
+            <input type="submit" class="btn btn-info btn-responsive" value="Add Fleet" />
+            <input type="button" class="btn btn-info btn-responsive" value="Save Fleet" ng-click="manager.saveFleet()" />
+            <input type="button" class="btn btn-info btn-responsive" value="Remove Fleet(s)" ng-click="manager.removeFleet()" />
+        </form>
+    </div>
+
+    <div style="white-space:nowrap;">
+        <div style="display:inline-block; padding-left: 4px; padding-right: 4px; margin-right: 10px; margin-left: 5px; border: 1px solid #0094ff" ng-repeat="fleet in manager.fleets">
+            <fleet-display></fleet-display>
+        </div>
+    </div>
+    
+
+</div>

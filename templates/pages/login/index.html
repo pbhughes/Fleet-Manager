@@ -1,0 +1,14 @@
+﻿<div class="container" id="login" ng-hide="viewControl.isLoggedIn">
+    <form ng-submit="viewControl.logIn()">
+        <label>UserID:</label>
+        <input type="text" id="txtUserName" ng-model="viewControl.userName" autofocus />
+        <label>Password</label>
+        <input type="password" id="txtPassword" ng-model="viewControl.password" />
+        <input type="submit" value="Log In" class="btn-info btn-responsive" />
+        <input type="checkbox" ng-model="viewControl.stayLoggedIn" name="name" value="{{viewControl.stayLoggedIn}}" />
+        <label>
+            Stay Logged In
+        </label>
+        <h5 style="color:red; font-size: 1.25em;" ng-hide="viewControl.isLoggedIn">{{viewControl.message}}</h5>
+    </form>
+</div>
