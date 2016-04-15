@@ -1,14 +1,13 @@
 ﻿<div>
     <div>
         <input type="checkbox" ng-model="fleet.isSelected" name="name" value="{{fleet.name}}" />
-        <a href="/#/fleet">{{ fleet.name | capitalize }}</a>
+        <a href="/#/fleet/{{fleet.name}}">{{ fleet.name | capitalize }}</a>
     </div>
     <span>Count: {{fleet.containers.length || 0}}</span>
     <span>Tonnage: {{ (fleet.totalTonnage | number:2) || 0}}</span>
 </div>
-<div class="row" ng-repeat="container in fleet.containers" draggable="true">
+<div class="row" ng-repeat="container in fleet.containers">
     <div class="col-sm-3">
-        <a href="#">{{container.ID}}</a>
-        
+        <a href="/#/container/{{container.ID}}" draggable="true">{{container.ID}}</a>
     </div>
 </div>

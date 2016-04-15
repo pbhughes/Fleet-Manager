@@ -11,7 +11,7 @@ h1 {
 }
 
 body {
-    font-size: 16px;
+    font-size: 12px;
     background-color: transparent;
 }
 
@@ -39,14 +39,14 @@ p {
 
 .siteUrl {
     display: inline;
-    line-height: 2.0em;
-    font-size: 2.3em;
+    line-height: 1.0em;
+    font-size: 1.0em;
 }
 
 .status {
     vertical-align: central;
     float: right;
-    padding-right: 3em;
+    padding-right: 1em;
 }
 
 .ng-dirty .ng-valid {

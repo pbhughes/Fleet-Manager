@@ -53,6 +53,8 @@
                     pocEmail: ''
             };
             fleetList.fleets.push(fleet);
+
+            this.newFleetName = '';
         }
 
        

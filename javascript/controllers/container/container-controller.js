@@ -1,8 +1,8 @@
 ﻿(function () {
-    angular.module('')
-    .controller('ContainerController', ['$http'], function ($http) {
-        this.ID = '';
-        this.tonnage = 0.00;
-        this.material = '';
-    });
+    angular.module('fleetManager')
+    .controller('ContainerController', ['$http', '$routeParams', '$scope', function ($http, $routeParams, $scope) {
+        $scope.ID = $routeParams.id;
+        $scope.tonnage = 0.00;
+        $scope.material = '';
+    }]);
 })();

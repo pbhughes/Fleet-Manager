@@ -7,11 +7,14 @@
         .when('/fleetlist', {
             templateUrl: "/templates/pages/fleetlist/index.html", controller: 'FleetListController'
         })
-        .when('/fleet', {
-            templateUrl : '/templates/pages/fleet/index.html'
+        .when('/fleet/:name', {
+            templateUrl : '/templates/pages/fleet/index.html', controller: "FleetController"
         })
         .when('/container/add', {
             templateUrl : "/templates/pages/container/add.html", controller : 'CointainerController'
+        })
+        .when('/container/:id', {
+            templateUrl: '/templates/pages/container/index.html', controller : 'ContainerController', controllerAs: 'container'
         });
     });
 })();
